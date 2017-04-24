@@ -167,7 +167,7 @@ int main()
 	{
 		arr[i] = std::rand() % 20;
 	}
-	ArrayExt::InsertInHeap(arr, size, 15, false);
+	ArrayExt::InsertInHeap(arr, size, 15, true);
 
 	for (int i = 0; i < size; ++i)
 	{
@@ -175,7 +175,7 @@ int main()
 	}
 	printf_s("\n");
 
-	ArrayExt::HeapSort(arr, size, false);
+	ArrayExt::HeapSort(arr, size, true);
 	//ArrayExt::InsertInHeap(arr, size, 9, true);
 	for (int i = 0; i < size; ++i)
 	{
