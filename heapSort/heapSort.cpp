@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include "TLinkedList.h"
+#include "DLinkedList.h"
 
 namespace ArrayExt {
 
@@ -155,6 +157,18 @@ namespace ArrayExt {
 			--count;
 			Heapify(heap, count + 1, isMax);
 		}
+	}
+
+	void IsBinTree(int *arr) {
+
+	}
+
+	void IsBinTree(DLinkedList<int> *arr) {
+
+	}
+
+	void IsBinTree(TLinkedList<int> *arr) {
+
 	}
 
 }
