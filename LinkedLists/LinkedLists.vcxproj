@@ -144,8 +144,6 @@
     <ClInclude Include="TLinkedList.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DLinkedList.cpp" />
-    <ClCompile Include="DNode.cpp" />
     <ClCompile Include="LinkedLists.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="stdafx.cpp">

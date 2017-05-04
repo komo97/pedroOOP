@@ -3,8 +3,18 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <stack>
 #include "TLinkedList.h"
 #include "DLinkedList.h"
+#include "DNode.h"
+
+typedef struct Tree
+{
+	int value;
+	DLinkedList<Tree> *nodes = NULL;
+	Tree* parentTree = NULL;
+
+}Tree;
 
 namespace ArrayExt {
 
@@ -49,6 +59,11 @@ namespace ArrayExt {
 		if (i >= heapSize)
 			return -1;
 		return i;
+	}
+
+	int GetIndexParent(int index)
+	{
+		return (index % 2) ? (index - 1) / 2 : (index - 2) / 2;
 	}
 
 	///<summary>
@@ -159,16 +174,69 @@ namespace ArrayExt {
 		}
 	}
 
-	void IsBinTree(int *arr) {
+	bool IsBinTreeArr(int *arr, const int& size) {
+		if (arr == NULL)
+			return false;
+		std::stack<int> arrIndexes;
+		int saveForSwap;
+		arrIndexes.push(0);
+		while (arrIndexes.size()) {
+			if (GetIndexChild(size, arrIndexes.top(), 0) == -1)
+			{
+				arrIndexes.pop();
+				do
+				{
+					saveForSwap = arrIndexes.top();
+					arrIndexes.pop();
+				} while (GetIndexChild(size, saveForSwap, 1) == -1 && arrIndexes.size() != 0);
+				if (arrIndexes.size() == 0) break;
+				if (arr[GetIndexChild(size, saveForSwap, 1)] < arr[saveForSwap])
+					return false;
+				arrIndexes.push(GetIndexChild(size, saveForSwap, 1));
+			}
+			else {
+				if (arr[GetIndexChild(size, arrIndexes.top(), 0)] > arr[arrIndexes.top()])
+				{
+					return false;
+				}
+				arrIndexes.push(GetIndexChild(size, arrIndexes.top(), 0));
+			}
 
+		}
+		return true;
 	}
 
-	void IsBinTree(DLinkedList<int> *arr) {
+	bool IsBinTreeDLinkList(DLinkedList<Tree> *arr) {
+		if (arr == NULL)
+			return false;
+		std::stack<DNode<Tree> *> arrIndexes;
+		DNode<Tree>* saveForSwap = NULL;
+		arrIndexes.push(arr->GetAtIndex(0));
+		while (arrIndexes.size()) {
+			if (arrIndexes.top()->element.nodes == NULL)
+			{
+				arrIndexes.pop();
+				do
+				{
+					saveForSwap = arrIndexes.top();
+					arrIndexes.pop();
+				} while (saveForSwap->element.nodes->GetAtIndex(1) == NULL && arrIndexes.size() != 0);
+				if (arrIndexes.size() == 0) break;
+				if (saveForSwap->element.nodes->GetAtIndex(1)->element.value < saveForSwap->element.value)
+					return false;
+				arrIndexes.push(saveForSwap->element.nodes->GetAtIndex(1));
+			}
+			else {
+				if (arrIndexes.top()->element.nodes->GetAtIndex(0)->element.value > arrIndexes.top()->element.value)
+				{
+					return false;
+				}
+				arrIndexes.push(arrIndexes.top()->element.nodes->GetAtIndex(0));
+			}
+			//if (arrIndexes.top()->element.nodes->Count() > 2) return false;
 
-	}
-
-	void IsBinTree(TLinkedList<int> *arr) {
-
+		}
+		return true;
 	}
 
 }
@@ -176,6 +244,55 @@ namespace ArrayExt {
 int main()
 {
 	int *arr = new int[10];
+	int *arr2 = new int[11] { 6, 2, 7, 1, 3, 4, 9, 0, 5, 2, 9 };
+#pragma region lista test
+	DLinkedList<Tree> list{ Tree() };
+	Tree *node;
+	node = &list.GetAtIndex(0)->element;
+	node->value = 6;
+	node->nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.value = 2;
+	node->nodes->GetAtIndex(0)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.parentTree = node;
+	node->nodes->Insert(Tree());
+	node->nodes->GetAtIndex(1)->element.value = 7;
+	node->nodes->GetAtIndex(1)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(1)->element.parentTree = node;
+	node = &node->nodes->GetAtIndex(0)->element;
+	node->nodes->GetAtIndex(0)->element.value = 1;
+	node->nodes->GetAtIndex(0)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.parentTree = node;
+	node->nodes->Insert(Tree());
+	node->nodes->GetAtIndex(1)->element.value = 3;
+	node->nodes->GetAtIndex(1)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(1)->element.parentTree = node;
+	node = &node->parentTree->nodes->GetAtIndex(1)->element;
+	node->nodes->GetAtIndex(0)->element.value = 4;
+	node->nodes->GetAtIndex(0)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.parentTree = node;
+	node->nodes->Insert(Tree());
+	node->nodes->GetAtIndex(1)->element.value = 9;
+	node->nodes->GetAtIndex(1)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(1)->element.parentTree = node;
+	node = &node->parentTree->nodes->GetAtIndex(0)->element.nodes->GetAtIndex(0)->element;
+	node->nodes->GetAtIndex(0)->element.value = 0;
+	node->nodes->GetAtIndex(0)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.parentTree = node;
+	node->nodes->Insert(Tree());
+	node->nodes->GetAtIndex(1)->element.value = 5;
+	node->nodes->GetAtIndex(1)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(1)->element.parentTree = node;
+	node = &node->parentTree->nodes->GetAtIndex(1)->element;
+	node->nodes->GetAtIndex(0)->element.value = 2;
+	node->nodes->GetAtIndex(0)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(0)->element.parentTree = node;
+	node->nodes->Insert(Tree());
+	node->nodes->GetAtIndex(1)->element.value = 9;
+	node->nodes->GetAtIndex(1)->element.nodes = new DLinkedList<Tree>(Tree());
+	node->nodes->GetAtIndex(1)->element.parentTree = node;
+
+#pragma endregion
+
 	int size = 10;
 	for (int i = 0; i < 10; ++i)
 	{
@@ -190,7 +307,11 @@ int main()
 	printf_s("\n");
 
 	ArrayExt::HeapSort(arr, size, true);
-	//ArrayExt::InsertInHeap(arr, size, 9, true);
+	
+	std::cout << "Arr2 is BST:"<<( ArrayExt::IsBinTreeArr(arr2, 11)  ? "TRUE" : "FALSE") << std::endl;
+	std::cout << "lista is BST:" << (ArrayExt::IsBinTreeDLinkList(&list) ? "TRUE" : "FALSE") << std::endl;
+
+	ArrayExt::InsertInHeap(arr, size, 9, true);
 	for (int i = 0; i < size; ++i)
 	{
 		printf_s("%d ", arr[i]);
