@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sumas", "Sumas\Sumas.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinarySearch", "BinarySearch\BinarySearch.vcxproj", "{35305F97-84A7-45E5-BE83-CB1E352D7765}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArbolDeNavidad", "ArbolDeNavidad\ArbolDeNavidad.vcxproj", "{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -191,6 +193,14 @@ Global
 		{35305F97-84A7-45E5-BE83-CB1E352D7765}.Release|x64.Build.0 = Release|x64
 		{35305F97-84A7-45E5-BE83-CB1E352D7765}.Release|x86.ActiveCfg = Release|Win32
 		{35305F97-84A7-45E5-BE83-CB1E352D7765}.Release|x86.Build.0 = Release|Win32
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Debug|x64.ActiveCfg = Debug|x64
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Debug|x64.Build.0 = Debug|x64
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Debug|x86.ActiveCfg = Debug|Win32
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Debug|x86.Build.0 = Debug|Win32
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Release|x64.ActiveCfg = Release|x64
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Release|x64.Build.0 = Release|x64
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Release|x86.ActiveCfg = Release|Win32
+		{A25CBA1C-7B85-4FD5-9E0D-A177D07FD67F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
