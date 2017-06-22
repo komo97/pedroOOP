@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLinkedListsShallowDeep", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConversionDeBases", "ConversionDeBases\ConversionDeBases.vcxproj", "{4B89F1C3-E7D0-4F07-94B8-6F3C4493379E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calendario", "Calendario\Calendario.vcxproj", "{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{4B89F1C3-E7D0-4F07-94B8-6F3C4493379E}.Release|x64.Build.0 = Release|x64
 		{4B89F1C3-E7D0-4F07-94B8-6F3C4493379E}.Release|x86.ActiveCfg = Release|Win32
 		{4B89F1C3-E7D0-4F07-94B8-6F3C4493379E}.Release|x86.Build.0 = Release|Win32
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Debug|x64.ActiveCfg = Debug|x64
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Debug|x64.Build.0 = Debug|x64
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Debug|x86.ActiveCfg = Debug|Win32
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Debug|x86.Build.0 = Debug|Win32
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Release|x64.ActiveCfg = Release|x64
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Release|x64.Build.0 = Release|x64
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Release|x86.ActiveCfg = Release|Win32
+		{DD8223B4-1F44-4BA8-9964-D6E3DF1C1760}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
